@@ -9,6 +9,6 @@
 echo ''$1'' > equation.tex
 pdflatex -interaction=nonstopmode template.tex
 if [ $? -eq 0 ]; then
-  convert -density 300 template.pdf -quality 90 "equation.$2"
+  convert -density 120 template.pdf -quality 90 "equation.$2"
 fi
 rm equation.tex *.aux *.log
