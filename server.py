@@ -8,7 +8,7 @@ app.debug = True
 @app.route('/tex/<query>')
 def tex(query):
 	print query;
-	return Response(renderTex(query.replace(" ","")),mimetype='image/png')
+	return Response(renderTex(query[:query.rindex(".")].replace(" ","")),mimetype='image/png')
 
 @app.route('/graph/<query>')
 def graph(query):
