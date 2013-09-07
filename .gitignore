@@ -34,8 +34,7 @@ nosetests.xml
 .project
 .pydevproject
 
-# Our stuff
-
+# Our Stuff
 data/
 *.pdf
 graph.png
@@ -43,3 +42,4 @@ graph.png
 
 # vim
 *.swp
+equation.png
