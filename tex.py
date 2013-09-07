@@ -1,5 +1,6 @@
 import os;
 import json;
+from subprocess import check_output, CalledProcessError
 
 #Constants
 _TREE_PATH="data/tex/";
@@ -33,20 +34,23 @@ def renderTex(query):
 	bucketTable = json.loads(bucketTableFile.read());
 
 	if query not in bucketTable.keys():
+
 		#File is not cache! Create PNG in bucket.
 		filename=str(len(os.listdir(_TREE_PATH+str(qhash))))+".png"
 		if not TeXToPng(query,_TREE_PATH+str(qhash),filename):
 			#An error has occurred while rendering the LaTeX. 
-			handleTeXRenderError("An error has occurred while renering LaTeX");
+			handleTeXRenderError("An error has occurred while rendering LaTeX.");
 
 		#Update bucketTable
 		bucketTable[query]=filename;
 
 		#Write back to bucketTableFile
+		bucketTableFile.seek(0);
 		bucketTableFile.write(json.dumps(bucketTable));
+		bucketTableFile.close();
 
 	#Return path to newly created/existing file
-	return _TREE_PATH+str(qhash)+bucketTable[query];
+	return open(_TREE_PATH+str(qhash)+"/"+bucketTable[query]).read();
 
 
 
@@ -58,13 +62,20 @@ def hashFunc(s):
 	Call some hashfunc and return the result.
 	Goes "hashy hashy".
 	"""
-	return hash(s);
+	return abs(hash(s));
 
 def TeXToPng(query,targetDir,name):
 	"""
 		Renders a latex string in query to a png in targetDir named name. Return true if successful, false if not.
 	"""
-	pass
+	print (query,targetDir+"/"+name);
+	try:
+		check_output("./to_png.sh {0} && mv equation.png data/".format(query).split());
+		check_output("mv equation.png {0}".format(targetDir+"/"+name).split());
+	except CalledProcessError:
+		return False
+	return True
+	
 
 def handleTeXRenderError(errorMsg):
 	"""
@@ -72,4 +83,4 @@ def handleTeXRenderError(errorMsg):
 	"""
 	print errorMsg;
 	#TODO: Handle errors and tell the user what an idiot he is for submitting malformed syntax in a way that doesn't cause the server to terminate like it does now.
-	raise RuntimeException("Something bad happened.");
+	raise Exception("Something really bad happened.");

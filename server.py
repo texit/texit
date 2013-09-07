@@ -1,11 +1,14 @@
 from flask import Flask
+from flask import Response
 from tex import renderTex;
 from graph import renderGraph;
 app = Flask(__name__)
+app.debug = True
 
 @app.route('/tex/<query>')
 def tex(query):
-	return renderTex(query)
+	print query;
+	return Response(renderTex(query.replace(" ","")),mimetype='image/png')
 
 @app.route('/graph/<query>')
 def graph(query):
