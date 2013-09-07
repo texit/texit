@@ -33,7 +33,15 @@ def renderGraph(query):
 
 		#File is not cache! Create PNG in bucket.
 		filename=str(len(os.listdir(_TREE_PATH+str(qhash))))+".png"
-		if not TeXToGraph(query,_TREE_PATH+str(qhash),filename):
+
+
+		fn=query.split(",")[0];
+		rest=query.split(",")[1:];
+		myParams={i[0]:i[1] for i in map(lambda x:x.split("="),rest)}
+
+
+
+		if not TeXToGraph(fn,_TREE_PATH+str(qhash),filename,myParams):
 			#An error has occurred while rendering the LaTeX. 
 			handleTeXRenderError("An error has occurred while rendering LaTeX.");
 
@@ -55,17 +63,31 @@ def hashFunc(s):
 	"""
 	return abs(hash(s));
 
-def TeXToGraph(fn,targetDir,name,xmin=-10,xmax=10,ymin=-10,ymax=10,xlabel="x",ylabel="y"):
+def TeXToGraph(fn,targetDir,name,paramsIn):
 	"""
 		Renders a graph in query to a png in targetDir named name. Return true if successful, false if not.
 	"""
-	print("./to_graph.sh '{0}' '{1}' '{2}' '{3}' '{4}' '{5}' '{6}' {7} {8}".format(fn,xmin,xmax,ymin,ymax,xlabel,ylabel,targetDir,name));
+	params={
+		'xmin':-10,
+		'xmax':10,
+		'ymin':-10,
+		'ymax':10,
+		'xlabel':"x",
+		'ylabel':"y",
+	}
+	for i in paramsIn:
+		if i!='xlabel' and i !='ylabel':
+			params[i]=int(paramsIn[i]);
+		else:
+			params[i]=paramsIn[i];
+	print params
+	print fn;
 	try:
-		check_output("./to_graph.sh {0} {1} {2} {3} {4} {5} {6} {7} {8}".format(fn,xmin,xmax,ymin,ymax,xlabel,ylabel,targetDir,name).split());
+		check_output("./to_graph.sh {0} {1} {2} {3} {4} {5} {6} {7} {8}".format(fn,params['xmin'],params['xmax'],params['ymin'],params['ymax'],params['xlabel'],params['ylabel'],targetDir,name).split());
 	except CalledProcessError:
 		return False
 	return True
-	
+
 
 def handleTeXRenderError(errorMsg):
 	"""
