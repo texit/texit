@@ -70,7 +70,7 @@ def TeXToPng(query,targetDir,name):
 	"""
 	print (query,targetDir+"/"+name);
 	try:
-		check_output("./to_png.sh {0} && mv equation.png data/".format(query).split());
+		check_output(["./to_png.sh",query]);
 		check_output("mv equation.png {0}".format(targetDir+"/"+name).split());
 	except CalledProcessError:
 		return False

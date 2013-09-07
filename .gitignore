@@ -39,3 +39,7 @@ nosetests.xml
 data/
 *.pdf
 graph.png
+*.test.*
+
+# vim
+*.swp
