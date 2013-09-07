@@ -5,11 +5,11 @@ from graph import renderGraph;
 app = Flask(__name__)
 app.debug = True
 
-@app.route('/tex/<query>')
+@app.route('/tex/<path:query>')
 def tex(query):
-	return Response(renderTex(query[:query.rindex(".")].replace(" ","")),mimetype='image/png')
+	return Response(renderTex(query[:query.rindex(".")].replace(" ","").replace("/","\\")),mimetype='image/png')
 
-@app.route('/graph/<query>')
+@app.route('/graph/<path:query>')
 def graph(query):
 	return Response(renderGraph(query[:query.rindex(".")].replace(" ","")),mimetype='image/png')
 
