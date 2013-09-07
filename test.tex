@@ -1,7 +1,19 @@
-\documentclass[11pt]{article}
 
-\usepackage{amsmath,textcomp,amssymb,geometry,graphicx}
-
+\documentclass[preview]{standalone}
+\usepackage{tikz,pgfplots}
 \begin{document}
-	$e^{\frac{1}{3\pi} x \Tau}$
+\begin{tikzpicture}
+  \begin{axis}[ 
+  	xmin=-10,
+  	xmax=10,
+  	ymin=-10,
+  	ymax=10,
+	samples=500,
+	smooth,
+    xlabel=x,
+    ylabel=y,
+  ] 
+    \addplot[domain=-10:10] {x^0.5}; 
+  \end{axis}
+\end{tikzpicture}
 \end{document}

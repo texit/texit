@@ -7,12 +7,11 @@ app.debug = True
 
 @app.route('/tex/<query>')
 def tex(query):
-	print query;
 	return Response(renderTex(query[:query.rindex(".")].replace(" ","")),mimetype='image/png')
 
 @app.route('/graph/<query>')
 def graph(query):
-	return renderGraph(query);
+	return Response(renderGraph(query[:query.rindex(".")].replace(" ","")),mimetype='image/png')
 
 #Pointless comment
 
