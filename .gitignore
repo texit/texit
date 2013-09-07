@@ -33,9 +33,3 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
-
-# Our stuff
-
-data/
-*.pdf
-graph.png
