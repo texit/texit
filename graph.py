@@ -1,9 +1,9 @@
-import os;
-import json;
+import os
+import json
 from subprocess import check_output, CalledProcessError
 
 #Constants
-_TREE_PATH="data/graph/";
+_TREE_PATH="data/graph/"
 
 def renderGraph(query):
 	"""
@@ -13,21 +13,21 @@ def renderGraph(query):
 		does not already exist.
 	"""
 	#Compute the hash of the query string
-	qhash = hashFunc(query); 
+	qhash = hashFunc(query) 
 
 	if (not os.path.exists(_TREE_PATH+str(qhash))):
 
 		#Create bucket if it doesn't already exist.
-		os.makedirs(_TREE_PATH+str(qhash));
+		os.makedirs(_TREE_PATH+str(qhash))
 
 		#Create the lookup table for the bucket.
-		bucketTableFile=open(_TREE_PATH+str(qhash)+"/lookup.json",'w');
-		bucketTableFile.write("{}");
-		bucketTableFile.close();
+		bucketTableFile=open(_TREE_PATH+str(qhash)+"/lookup.json",'w')
+		bucketTableFile.write("{}")
+		bucketTableFile.close()
 
 	#Load bucketTable
-	bucketTableFile=open(_TREE_PATH+str(qhash)+"/lookup.json",'r+');
-	bucketTable = json.loads(bucketTableFile.read());
+	bucketTableFile=open(_TREE_PATH+str(qhash)+"/lookup.json",'r+')
+	bucketTable = json.loads(bucketTableFile.read())
 
 	if query not in bucketTable.keys():
 
@@ -40,21 +40,20 @@ def renderGraph(query):
 		myParams={i[0]:i[1] for i in map(lambda x:x.split("="),rest)}
 
 
-
 		if not TeXToGraph(fn,_TREE_PATH+str(qhash),filename,myParams):
 			#An error has occurred while rendering the LaTeX. 
 			handleTeXRenderError("An error has occurred while rendering LaTeX.");
 
 		#Update bucketTable
-		bucketTable[query]=filename;
+		bucketTable[query]=filename
 
 		#Write back to bucketTableFile
-		bucketTableFile.seek(0);
-		bucketTableFile.write(json.dumps(bucketTable));
-		bucketTableFile.close();
+		bucketTableFile.seek(0)
+		bucketTableFile.write(json.dumps(bucketTable))
+		bucketTableFile.close()
 
 	#Return path to newly created/existing file
-	return open(_TREE_PATH+str(qhash)+"/"+bucketTable[query]).read();
+	return open(_TREE_PATH+str(qhash)+"/"+bucketTable[query]).read()
 
 def hashFunc(s):
 	"""
@@ -68,13 +67,13 @@ def TeXToGraph(fn,targetDir,name,paramsIn):
 		Renders a graph in query to a png in targetDir named name. Return true if successful, false if not.
 	"""
 	params={
-		'xmin':-10,
-		'xmax':10,
-		'ymin':-10,
-		'ymax':10,
-		'xlabel':"x",
-		'ylabel':"y",
-	}
+			'xmin':-10,
+			'xmax':10,
+			'ymin':-10,
+			'ymax':10,
+			'xlabel':"x",
+			'ylabel':"y",
+			}
 	for i in paramsIn:
 		if i!='xlabel' and i !='ylabel':
 			params[i]=int(paramsIn[i]);
@@ -88,11 +87,13 @@ def TeXToGraph(fn,targetDir,name,paramsIn):
 		return False
 	return True
 
-
 def handleTeXRenderError(errorMsg):
 	"""
 		Handles an error encountered while attempting to render a TeX string
 	"""
-	print errorMsg;
+	print errorMsg
 	#TODO: Handle errors and tell the user what an idiot he is for submitting malformed syntax in a way that doesn't cause the server to terminate like it does now.
-	raise Exception("Something really bad happened.");
+	raise Exception("Something really bad happened.")
+
+def paramsIn(query):
+	return { x[0]:x[1] for x in map(lambda x:x.split("="),query.split("|")) }
