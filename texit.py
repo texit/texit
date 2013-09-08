@@ -11,11 +11,11 @@ if (PRODUCTION):
 
 @app.route('/')
 def homePage():
-	return html("index");
+	return Response(open("assets/html/index.html"),mimetype='text/html')
 
-@app.route('/<page>')
-def html(page):
-	return Response(open("assets/html/"+page+".html"),mimetype='text/html')
+@app.route('/<path:query>')
+def tex2(query):
+	return Response(renderTex(query.replace(".png","").replace("$","").replace("/","\\")),mimetype='image/png')
 
 @app.route('/js/<filename>')
 def js(filename):
