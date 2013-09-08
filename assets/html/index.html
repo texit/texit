@@ -1,10 +1,47 @@
 <html>
 	<head>
-		<script src = "js/test.js"></script>
-		<link href="css/test.css" rel="stylesheet" media="screen"/>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/main.js"></script>
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+		<style>
+			div.center{
+				position:relative;top:35%;width:100%;z-index:2;
+			}
+			div.display{
+				position:absolute;top:30%;width:100%;z-index:1;
+			}
+			div.bgTab{
+				padding:5px;background-color:rgba(255,255,255,.6); width:400px;
+			}
+			div.bgTab:hover{
+				padding:5px;background-color:rgba(255,255,255,.7); width:400px;
+			}
+
+		</style>
 	</head>
-	<body>
-		I am not a toaster.
-		<a href="asdf">Don't click here.</a>
+	<body style='background-color:rgba(100,100,100,1)'>
+		<div class="center" id="stripe">
+			<center>
+				<div class="bgTab">
+					<h1>texit.</h1>
+					<strong>$</strong><input id="texinput" type="text" placeholder="Type your LaTeX string here."/><strong>$</strong>
+					<br/>
+					<input type="button" class="btn btn-success" onclick="renderHandler()" value="Render!"/>
+					<br/>
+					<br/>
+				</div>
+			</center>
+		</div>
+		<br/>
+		<div class="display" id="display">
+			<center>
+				<div id="eqdisplay" class="bgTab" style="height:400px;opacity:0;z-index:1;">
+					<div id="close" style="position:relative; top:0px; text-align:right; width:100%;"><strong><a href="#" onclick="onCloseTex()">x</a></strong>&nbsp&nbsp</div>
+					<div id="texdisplay" style="position:relative; top:40%; width:100%;"></div>
+				</div>
+			</center>
+		</div>
+
 	</body>
 </html>
