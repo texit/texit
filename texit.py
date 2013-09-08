@@ -13,6 +13,10 @@ if (PRODUCTION):
 def homePage():
 	return Response(open("assets/html/index.html"),mimetype='text/html')
 
+@app.route('/docs/<page>')
+def docPage(page):
+	return Response(open("assets/html/"+page+".html"),mimetype='text/html')
+
 @app.route('/<path:query>')
 def tex2(query):
 	return Response(renderTex(query.replace(".png","").replace("$","").replace("/","\\")),mimetype='image/png')
@@ -25,7 +29,11 @@ def js(filename):
 def css(filename):
 	return Response(open("assets/css/"+filename),mimetype='text/css')
 
-@app.route('/css/<filename>')
+@app.route('/file/<filename>')
+def file(filename):
+	return Response(open("assets/file/"+filename),mimetype='application/octet-stream')
+
+@app.route('/img/<filename>')
 def img(filename):
 	return Response(open("assets/img/"+filename),mimetype='text/css')
 

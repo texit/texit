@@ -28,6 +28,8 @@ echo '
 
 
 pdflatex -interaction=nonstopmode equation.tex
-convert -density 114 equation.pdf -quality 90 equation.png
+if [ $? -eq 0 ]; then
+	convert -density 114 equation.pdf -quality 90 equation.png
+fi
 rm equation.tex *.aux *.log
 mv equation.png $8/$9

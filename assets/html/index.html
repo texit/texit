@@ -1,11 +1,14 @@
 <html>
 	<head>
-		<title>texit.</title>
+		<title>texit</title>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
 		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen"/>
 		<style>
+			body{
+				overflow:hidden;
+			}
 			div.center{
 				position:absolute;top:35%;width:100%;z-index:2;
 			}
@@ -18,32 +21,112 @@
 			div.bgTab:hover{
 				padding:5px;background-color:rgba(255,255,255,.7); width:400px;
 			}
+			div.topDisplay{
+				position:absolute; 
+				top:0%; 
+				right:10%;
+				width:90px;
+				height:3%;
+				background-color:rgba(255,255,255,.2);
+				border-radius:5px;
+				vertical-align:text-bottom;
+				padding-left:1%;
+				padding-right:1%;
+			}
+			div.topDisplay:hover{
+				background-color:rgba(255,255,255,.7);
+			}
 
+			div.botLeftDisplay{
+				position:absolute; 
+				bottom:0%; 
+				left:10%;
+				width:240px;
+				height:3%;
+				background-color:rgba(255,255,255,.2);
+				border-radius:5px;
+				vertical-align:text-bottom;
+				padding-left:1%;
+				padding-right:1%;
+			}
+			div.botLeftDisplay:hover{
+				background-color:rgba(255,255,255,.7);
+			}
+
+			div.botRightDisplay{
+				position:absolute; 
+				bottom:0%; 
+				right:10%;
+				width:80px;
+				height:3%;
+				background-color:rgba(255,255,255,.2);
+				border-radius:5px;
+				vertical-align:text-bottom;
+				padding-left:1%;
+				padding-right:1%;
+			}
+			div.botRightDisplay:hover{
+				background-color:rgba(255,255,255,.7);
+			}
+			#eqdisplay{
+				display:table;
+			}
+			#texdisplay{
+				display:table-cell;
+				vertical-align:middle;
+				text-align:center;
+			}
+			#teximg{
+			}
 		</style>
 	</head>
-	<body style='background-color:rgba(100,100,100,1)'>
-		<div class="center" id="stripe">
-			<center>
-				<div class="bgTab">
-					<h1>texit.</h1>
-					<strong>$</strong>&nbsp;&nbsp;&nbsp;<input id="texinput" class="input-large search-query" type="textarea" placeholder="Enter your LaTeX string here."/>&nbsp;&nbsp;&nbsp;<strong>$</strong>
-					<br/>
-					<br/>
-					<input type="button" class="btn btn-success" onclick="renderHandler()" value="Render!"/>
-					<br/>
-					<br/>
-				</div>
-			</center>
-		</div>
-		<br/>
-		<div class="display" id="display">
-			<center>
-				<div id="eqdisplay" class="bgTab" style="height:400px;opacity:0;z-index:1;">
-					<div id="close" style="position:relative; top:0px; text-align:right; width:100%;"><strong><a href="#" onclick="onCloseTex()">x</a></strong>&nbsp&nbsp</div>
-					<div id="texdisplay" style="position:relative; top:40%; width:100%;"></div>
-				</div>
-			</center>
-		</div>
+	<body background="/img/background.jpg">
+		<!--<body style='background-color:rgba(100,100,100,1)'>-->
 
-	</body>
-</html>
+			<div id="fb-root"></div>
+			<script>(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=153312284809357";
+				fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));</script>
+
+			<div class="center" id="stripe">
+				<center>
+					<div class="bgTab">
+						<h1>texit.</h1>
+						&nbsp;&nbsp;&nbsp;<input id="texinput" class="input-large search-query" type="textarea" placeholder="Your expression here."/>&nbsp;&nbsp;&nbsp;
+						<br/>
+						<br/>
+						<input type="button" class="btn btn-success" onclick="renderHandler()" value="Render"/>
+						<input type="button" class="btn btn-success" onclick="graphHandler()" value="Graph"/>
+						<br/>
+						<br/>
+					</div>
+				</center>
+			</div>
+			<br/>
+			<div class="display" id="display">
+				<center>
+					<div id="eqdisplay" class="bgTab" style="height:400px;opacity:0;z-index:1;">
+						<div id="close" style="position:relative; top:0px; text-align:right; width:100%;"><strong><a href="#" onclick="onCloseTex()">x</a></strong>&nbsp&nbsp</div>
+						<div id="texdisplay" style="position:relative; top:40%; width:100%;"></div>
+					</div>
+				</center>
+			</div>
+
+			<div class="topDisplay">
+				<a href="/docs/api">API</a>&nbsp;&nbsp;|&nbsp;
+				<a href="https://github.com/texit/texit">Github</a>
+			</div>
+			<div class="botLeftDisplay">
+				Created by <a href="https://github.com/zachlatta">Zach Latta</a> and <a href="https://github.com/arctangent1759">Alex Chu</a>
+			</div>
+			<div class="botRightDisplay">
+				<div class="fb-like" data-href="http://tex.sh/" data-width="200" data-layout="button_count" data-show-faces="true" data-send="false"></div>
+			</div>
+
+
+		</body>
+	</html>
