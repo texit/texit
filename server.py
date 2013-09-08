@@ -2,8 +2,12 @@ from flask import Flask
 from flask import Response
 from tex import renderTex;
 from graph import renderGraph;
+from settings import *;
+from werkzeug.contrib.fixers import ProxyFix
 app = Flask(__name__)
-app.debug = True
+app.debug = not PRODUCTION
+if (PRODUCTION):
+	app.wsgi_app=ProxyFix(app.wsgi_app);
 
 @app.route('/')
 def homePage():
