@@ -7,7 +7,7 @@
 		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen"/>
 		<style>
 			div.center{
-				position:relative;top:35%;width:100%;z-index:2;
+				position:absolute;top:35%;width:100%;z-index:2;
 			}
 			div.display{
 				position:absolute;top:30%;width:100%;z-index:1;
@@ -26,7 +26,8 @@
 			<center>
 				<div class="bgTab">
 					<h1>texit.</h1>
-					<strong>$</strong><input id="texinput" type="text" placeholder="Type your LaTeX string here."/><strong>$</strong>
+					<strong>$</strong>&nbsp;&nbsp;&nbsp;<input id="texinput" class="input-large search-query" type="textarea" placeholder="Enter your LaTeX string here."/>&nbsp;&nbsp;&nbsp;<strong>$</strong>
+					<br/>
 					<br/>
 					<input type="button" class="btn btn-success" onclick="renderHandler()" value="Render!"/>
 					<br/>

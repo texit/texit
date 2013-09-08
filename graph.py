@@ -43,7 +43,7 @@ def renderGraph(query):
 
 		if not TeXToGraph(fn,_TREE_PATH+str(qhash),filename,myParams):
 			#An error has occurred while rendering the LaTeX. 
-			handleTeXRenderError("An error has occurred while rendering LaTeX.");
+			return open(handleTeXRenderError("An error has occurred while rendering LaTeX."));
 
 		#Update bucketTable
 		bucketTable[query]=filename;
@@ -94,5 +94,4 @@ def handleTeXRenderError(errorMsg):
 		Handles an error encountered while attempting to render a TeX string
 	"""
 	print errorMsg;
-	#TODO: Handle errors and tell the user what an idiot he is for submitting malformed syntax in a way that doesn't cause the server to terminate like it does now.
-	raise Exception("Something really bad happened.");
+	return "assets/img/error.png"

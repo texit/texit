@@ -25,6 +25,10 @@ def js(filename):
 def css(filename):
 	return Response(open("assets/css/"+filename),mimetype='text/css')
 
+@app.route('/css/<filename>')
+def img(filename):
+	return Response(open("assets/img/"+filename),mimetype='text/css')
+
 @app.route('/tex/<path:query>')
 def tex(query):
 	return Response(renderTex(query.replace(".png","").replace("$","").replace("/","\\")),mimetype='image/png')
