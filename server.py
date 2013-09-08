@@ -4,6 +4,7 @@ from tex import renderTex;
 from graph import renderGraph;
 app = Flask(__name__)
 app.debug = True
+
 @app.route('/')
 def homePage():
 	return html("index");
