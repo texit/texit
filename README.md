@@ -6,7 +6,7 @@ A simple web service that makes beautiful typesetting easy anywhere on the web.
 
 ### Equations
 
-Get rendered PNG of provided ![LaTeX](http://tex.sh/tex/$\LaTeX$.png) equation.
+Get rendered PNG of provided ![LaTeX](http://tex.sh/tex/$LaTeX$.png) equation.
 
     http://tex.sh/tex/$<latex equation here>$.png
 
