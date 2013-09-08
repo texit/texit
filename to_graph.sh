@@ -29,7 +29,7 @@ echo '
 
 pdflatex -interaction=nonstopmode equation.tex
 if [ $? -eq 0 ]; then
-	convert -density 300 equation.pdf -quality 90 equation.png
+	convert -density 114 equation.pdf -quality 90 equation.png
 fi
 rm equation.tex *.aux *.log
 mv equation.png $8/$9
