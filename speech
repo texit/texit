@@ -1,7 +1,0 @@
-
-    We are faced with a problem. We have problem sets due electronically tomorrow and we're not sure how to turn them in. We could write them in plain text, which is understood by all computers, but plaintext has no support for mathematics. We could write them in Markdown, a beautiful markup language designed to be compiled to HTML, but it also has no math support. Or, we could write them in LaTeX, the academic and scientific standard for mathematics typesetting, but, unfortunately, quite difficult to read in plain text.      
-
-    To solve this problem, we created texit. Texit is a simple web service that makes beautiful typesetting and graphing easy anywhere. It's platform and implementation agnostic, making it the ideal choice for the inclusion of math anywhere.
-     
-    By going to http://tex.sh/$latex query$, we can easily have our provided query executed and displayed to us, in near real time. We've also written bindings for ruby and python, both of which are available online at github.com/texit.
-
