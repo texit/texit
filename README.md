@@ -8,7 +8,7 @@ A simple web service that makes beautiful typesetting easy anywhere on the web.
 
 Get rendered PNG of provided ![LaTeX](http://tex.sh/tex/$LaTeX$.png) equation.
 
-    http://tex.sh/tex/$<latex equation here>$.png
+    http://tex.sh/tex/$<latex goes here>$.png
 
 #### Markdown Example
 
