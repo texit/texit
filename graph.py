@@ -7,9 +7,9 @@ _TREE_PATH="data/graph/"
 
 def renderGraph(query):
 	"""
-		Returns the path to a png file that
+		Returns the path to a svg file that
 		contains the graph render of the query.
-		Creates the png file itself if it 
+		Creates the svg file itself if it 
 		does not already exist.
 	"""
 	#Compute the hash of the query string
@@ -32,7 +32,7 @@ def renderGraph(query):
 	if query not in bucketTable.keys():
 
 		#File is not cache! Create PNG in bucket.
-		filename=str(len(os.listdir(_TREE_PATH+str(qhash))))+".png"
+		filename=str(len(os.listdir(_TREE_PATH+str(qhash))))+".svg"
 
 
 		fn=query.split(",")[0]
@@ -65,7 +65,7 @@ def hashFunc(s):
 
 def TeXToGraph(fn,targetDir,name,paramsIn):
 	"""
-		Renders a graph in query to a png in targetDir named name. Return true if successful, false if not.
+		Renders a graph in query to a svg in targetDir named name. Return true if successful, false if not.
 	"""
 	params={
 		'xmin':-10,

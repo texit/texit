@@ -8,9 +8,9 @@ _TREE_PATH="data/tex/"
 
 def renderTex(query):
 	"""
-		Returns the path to a png file that
+		Returns the path to a svg file that
 		contains the tex render of the query.
-		Creates the png file itself if it 
+		Creates the svg file itself if it 
 		does not already exist.
 	"""
 	#Compute the hash of the query string
@@ -36,7 +36,7 @@ def renderTex(query):
 	if query not in bucketTable.keys():
 
 		#File is not cache! Create PNG in bucket.
-		filename=str(len(os.listdir(_TREE_PATH+str(qhash))))+".png"
+		filename=str(len(os.listdir(_TREE_PATH+str(qhash))))+".svg"
 		if not TeXToPng(query,_TREE_PATH+str(qhash),filename):
 			#An error has occurred while rendering the LaTeX. 
 			return open(handleTeXRenderError("An error has occurred while rendering LaTeX."))
@@ -66,12 +66,12 @@ def hashFunc(s):
 
 def TeXToPng(query,targetDir,name):
 	"""
-		Renders a latex string in query to a png in targetDir named name. Return true if successful, false if not.
+		Renders a latex string in query to a svg in targetDir named name. Return true if successful, false if not.
 	"""
 	print (query,targetDir+"/"+name)
 	try:
-		check_output(["./to_png.sh",query])
-		check_output("mv equation.png {0}".format(targetDir+"/"+name).split())
+		check_output(["./to_svg.sh",query])
+		check_output("mv equation.svg {0}".format(targetDir+"/"+name).split())
 	except CalledProcessError:
 		return False
 	return True

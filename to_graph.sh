@@ -1,8 +1,8 @@
 #!/bin/bash -u
 #
-# Usage: ./to_png.sh 'graph expression' xmin xmax ymin ymax xlabel ylabel
+# Usage: ./to_graph.sh 'graph expression' xmin xmax ymin ymax xlabel ylabel
 #
-# Example: ./to_png.sh '\frac{2}{3}'
+# Example: ./to_graph.sh '\frac{2}{3}'
 
 echo $2 > test.txt
 
@@ -29,7 +29,7 @@ echo '
 
 pdflatex -interaction=nonstopmode equation.tex
 if [ $? -eq 0 ]; then
-	convert -density 114 equation.pdf -quality 90 equation.png
+  pdf2svg equation.pdf equation.svg
 fi
 rm equation.tex *.aux *.log
-mv equation.png $8/$9
+mv equation.svg $8/$9

@@ -7,6 +7,6 @@
 echo ''$1'' > equation.tex
 pdflatex -interaction=nonstopmode template.tex
 if [ $? -eq 0 ]; then
-  convert -density 114 template.pdf -quality 90 equation.png
+  pdf2svg template.pdf equation.svg
 fi
 rm equation.tex *.aux *.log

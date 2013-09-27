@@ -29,7 +29,7 @@ def docPage(page):
 def tex2(query):
   if MIXPANEL_TOKEN:
     mp.track(request.remote_addr, 'rendered tex')
-  return Response(renderTex(query.replace(".png","").replace("$","").replace("/","\\")),mimetype='image/png')
+  return Response(renderTex(query.replace(".png","").replace("$","").replace("/","\\")),mimetype='image/svg+xml')
 
 @app.route('/js/<filename>')
 def js(filename):
@@ -51,13 +51,13 @@ def img(filename):
 def tex(query):
   if MIXPANEL_TOKEN:
     mp.track(request.remote_addr, 'rendered tex')
-  return Response(renderTex(query.replace(".png","").replace("$","").replace("/","\\")),mimetype='image/png')
+  return Response(renderTex(query.replace(".png","").replace("$","").replace("/","\\")),mimetype='image/svg+xml')
 
 @app.route('/graph/<path:query>')
 def graph(query):
   if MIXPANEL_TOKEN:
     mp.track(request.remote_addr, 'rendered graph')
-  return Response(renderGraph(query.replace(".png","").replace(" ","")),mimetype='image/png')
+  return Response(renderGraph(query.replace(".png","").replace(" ","")),mimetype='image/svg+xml')
 
 #Pointless comment
 
