@@ -1,9 +1,9 @@
 from flask import Flask
 from flask import Response
 from flask import request
-from tex import renderTex;
-from graph import renderGraph;
-from settings import *;
+from tex import renderTex
+from graph import renderGraph
+from settings import *
 from mixpanel import Mixpanel
 
 from werkzeug.contrib.fixers import ProxyFix
@@ -15,7 +15,7 @@ if MIXPANEL_TOKEN:
   mp = Mixpanel(MIXPANEL_TOKEN)
 
 if (PRODUCTION):
-  app.wsgi_app=ProxyFix(app.wsgi_app);
+  app.wsgi_app=ProxyFix(app.wsgi_app)
 
 @app.route('/')
 def homePage():
@@ -62,4 +62,4 @@ def graph(query):
 #Pointless comment
 
 if __name__=="__main__":
-  app.run();
+  app.run()
