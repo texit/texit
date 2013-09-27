@@ -6,9 +6,9 @@ A simple web service that makes beautiful typesetting easy anywhere on the web.
 
 ### Equations
 
-Get rendered PNG of provided LaTeX equation.
+Get rendered SVG of provided LaTeX equation.
 
-    http://tex.sh/tex/$<latex goes here>$.png
+    http://tex.sh/tex/$<latex goes here>$
 
 #### Markdown Example
 
