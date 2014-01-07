@@ -1,4 +1,4 @@
-# texit [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/texit/texit/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+# texit
 
 A simple web service that makes beautiful typesetting easy anywhere on the web.
 
