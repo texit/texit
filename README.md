@@ -3,6 +3,8 @@
 **Notice:** texit is no longer live. If you'd like to host it, please contact
 me via email at zach@zachlatta.com or create a GitHub issue.
 
+---
+
 A simple web service that makes beautiful typesetting easy anywhere on the web.
 
 ## Usage
