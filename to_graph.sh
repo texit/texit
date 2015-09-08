@@ -11,7 +11,7 @@ echo '
 \usepackage{tikz,pgfplots}
 \begin{document}
 \begin{tikzpicture}
-  \begin{axis}[ 
+  \begin{axis}[
   	xmin='$2',
   	xmax='$3',
   	ymin='$4',
@@ -20,8 +20,8 @@ echo '
 	smooth,
     xlabel='$6',
     ylabel='$7',
-  ] 
-    \addplot[domain='$2':'$3'] {'$1'}; 
+  ]
+    \addplot[domain='$2':'$3'] {'$1'};
   \end{axis}
 \end{tikzpicture}
 \end{document}' > equation.tex
