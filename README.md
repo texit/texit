@@ -1,10 +1,5 @@
 # texit
 
-**Notice:** texit is no longer live. If you'd like to host it, please contact
-me via email at zach@zachlatta.com or create a GitHub issue.
-
----
-
 A simple web service that makes beautiful typesetting easy anywhere on the web.
 
 ## Usage
@@ -13,35 +8,35 @@ A simple web service that makes beautiful typesetting easy anywhere on the web.
 
 Get rendered SVG of provided LaTeX equation.
 
-    http://tex.sh/tex/$<latex goes here>$
+    https://texit.apps.zachlatta.com/tex/$<latex goes here>$
 
 #### Markdown Example
 
 You'll have to escape backslashes and friends when using Markdown.
 
-    ![Discrete Fourier Transform](http://tex.sh/tex/$\\sum_{i=-\\infty}^{\\infty} x[n] e^{-i\\omega t}$)
+    ![Discrete Fourier Transform](https://texit.apps.zachlatta.com/tex/$\\sum_{i=-\\infty}^{\\infty} x[n] e^{-i\\omega t}$)
 
-becomes ![Example](http://tex.sh/tex/$\\sum_{i=-\\infty}^{\\infty} x[n] e^{-i\\omega t}$)
+becomes ![Example](https://texit.apps.zachlatta.com/tex/$\\sum_{i=-\\infty}^{\\infty} x[n] e^{-i\\omega t}$)
 
 ### Graphs
 
 Get a graph of a function:
 
-    http://tex.sh/graph/x^2
+    https://texit.apps.zachlatta.com/graph/x^2
 
 Output:
 
-![Basic Parabola](http://tex.sh/graph/x^2)
+![Basic Parabola](https://texit.apps.zachlatta.com/graph/x^2)
 
 #### Parameters
 
 Parameters are passed after the function to graph.
 
-    http://tex.sh/graph/x^2,xmin=-5,xmax=+5,ymin=0,xlabel=label
+    https://texit.apps.zachlatta.com/graph/x^2,xmin=-5,xmax=+5,ymin=0,xlabel=label
 
 This renders out to the following.
 
-![Example Graph](http://tex.sh/graph/x^2,xmin=-5,xmax=+5,ymin=0,xlabel=label)
+![Example Graph](https://texit.apps.zachlatta.com/graph/x^2,xmin=-5,xmax=+5,ymin=0,xlabel=label)
 
 | Valid parameters |
 | ---------------- |
